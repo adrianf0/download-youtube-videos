@@ -4,7 +4,7 @@ import threading
 import tools
 import pafy
 import os
-
+import shlex
 
 class Video:
 
@@ -69,7 +69,7 @@ class DownloadedVideo:
 
     @staticmethod
     def _create_process(command: str):
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process = subprocess.Popen( shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         process.communicate()
 
 
